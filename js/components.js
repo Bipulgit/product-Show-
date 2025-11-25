@@ -27,20 +27,36 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 if (insertLocation === 'head') {
                     // Insert into head
-                    const tempDiv = document.createElement('div');
-                    tempDiv.innerHTML = data;
-                    const headContent = tempDiv.innerHTML;
-                    document.head.insertAdjacentHTML('beforeend', headContent);
+                    document.head.insertAdjacentHTML('beforeend', data);
                 } else {
-                    // Replace placeholder in body
-                    const bodyHTML = document.body.innerHTML;
-                    document.body.innerHTML = bodyHTML.replace(`<!-- ${placeholder} -->`, data);
+                    // Find and replace placeholder comment
+                    const comments = document.createNodeIterator(
+                        document.body,
+                        NodeFilter.SHOW_COMMENT
+                    );
+                    
+                    let currentComment;
+                    while (currentComment = comments.nextNode()) {
+                        if (currentComment.nodeValue.trim() === placeholder) {
+                            const temp = document.createElement('div');
+                            temp.innerHTML = data;
+                            while (temp.firstChild) {
+                                currentComment.parentNode.insertBefore(temp.firstChild, currentComment);
+                            }
+                            currentComment.parentNode.removeChild(currentComment);
+                            break;
+                        }
+                    }
                 }
                 
                 // Initialize navigation after header is loaded
                 if (placeholder === 'HEADER_COMPONENT') {
-                    initializeNavigation();
-                    setActiveNavLink();
+                    setTimeout(() => {
+                        if (typeof initializeNavigation === 'function') {
+                            initializeNavigation();
+                        }
+                        setActiveNavLink();
+                    }, 100);
                 }
             })
             .catch(error => {

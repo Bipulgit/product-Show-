@@ -12,7 +12,13 @@ function initHeroSlider() {
     let currentSlide = 0;
     let slideInterval;
 
-    if (slides.length === 0) return;
+    console.log('Initializing slider. Found slides:', slides.length);
+    
+    if (slides.length === 0) {
+        console.log('No slides found, retrying in 200ms...');
+        setTimeout(initHeroSlider, 200);
+        return;
+    }
 
     function showSlide(index) {
         // Update currentSlide based on index
@@ -44,11 +50,15 @@ function initHeroSlider() {
     }
 
     function startAutoSlide() {
+        stopAutoSlide(); // Clear any existing interval
         slideInterval = setInterval(nextSlide, 5000);
+        console.log('Auto-slide started');
     }
 
     function stopAutoSlide() {
-        clearInterval(slideInterval);
+        if (slideInterval) {
+            clearInterval(slideInterval);
+        }
     }
 
     // Event listeners
@@ -71,8 +81,7 @@ function initHeroSlider() {
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             stopAutoSlide();
-            currentSlide = index;
-            showSlide(currentSlide);
+            showSlide(index);
             startAutoSlide();
         });
     });
@@ -86,6 +95,8 @@ function initHeroSlider() {
         hero.addEventListener('mouseenter', stopAutoSlide);
         hero.addEventListener('mouseleave', startAutoSlide);
     }
+    
+    console.log('Slider initialized successfully');
 }
 
 // Navigation functionality
@@ -95,32 +106,46 @@ function initializeNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     const header = document.querySelector('.header');
     
+    console.log('Initializing navigation...', {
+        navToggle: navToggle,
+        navMenu: navMenu,
+        navLinksCount: navLinks.length
+    });
+    
     // Mobile menu toggle
-    if (navToggle) {
-        navToggle.addEventListener('click', () => {
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('Hamburger clicked!');
             navToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
             document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
         });
+    } else {
+        console.error('Navigation elements not found!');
     }
     
     // Close mobile menu when clicking on a link
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            navToggle.classList.remove('active');
-            navMenu.classList.remove('active');
-            document.body.style.overflow = '';
+            if (navToggle && navMenu) {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
         });
     });
     
     // Header scroll effect
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+    if (header) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
 }
 
 // Navigation functionality
@@ -343,8 +368,12 @@ function initLazyLoading() {
 
 // Initialize all features when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    initHeroSlider();
-    initEnquiryPopup();
+    // Wait for DOM to be fully ready before initializing slider
+    setTimeout(() => {
+        initHeroSlider();
+        initEnquiryPopup();
+        initCertificateLightbox();
+    }, 100);
     
     // Wait a bit for components to load
     setTimeout(() => {
@@ -356,6 +385,46 @@ document.addEventListener('DOMContentLoaded', function() {
         initGallery();
     }, 500);
 });
+
+// Certificate Lightbox functionality
+function initCertificateLightbox() {
+    const certCards = document.querySelectorAll('.certification-card-home');
+    const lightbox = document.getElementById('certLightbox');
+    const lightboxImg = document.getElementById('certLightboxImg');
+    const closeBtn = document.querySelector('.cert-lightbox-close');
+    
+    if (!lightbox || !lightboxImg) return;
+    
+    certCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const imgSrc = card.getAttribute('data-cert-img');
+            lightboxImg.src = imgSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+    
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeLightbox);
+    }
+    
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+    
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
+}
 
 // Enquiry Popup functionality
 function initEnquiryPopup() {
