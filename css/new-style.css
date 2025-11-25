@@ -2625,6 +2625,8 @@ button {
         transform: translateX(-100%);
         transition: var(--transition-base);
         box-shadow: var(--shadow-lg);
+        overflow-y: auto;
+        z-index: 999;
     }
     
     .nav-menu.active {
@@ -2635,6 +2637,7 @@ button {
         flex-direction: column;
         width: 100%;
         gap: 0;
+        margin-bottom: 0;
     }
     
     .nav-item {
@@ -2644,16 +2647,25 @@ button {
     
     .nav-link {
         display: block;
-        padding: var(--spacing-md) 0;
+        padding: 1rem 0;
+        color: var(--text-dark);
+        font-size: 1rem;
+        font-weight: 500;
+    }
+    
+    .nav-link::after {
+        display: none;
     }
     
     .nav-cta {
         width: 100%;
-        margin-top: var(--spacing-md);
+        margin-top: var(--spacing-lg);
+        padding-top: var(--spacing-md);
     }
     
     .nav-cta .btn {
         width: 100%;
+        padding: 1rem;
     }
     
     .hero-title {
