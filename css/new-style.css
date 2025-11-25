@@ -1078,8 +1078,14 @@ button {
 .contact-home-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-3xl);
-    align-items: center;
+    gap: 0;
+    align-items: stretch;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 .contact-home-left {
@@ -1088,38 +1094,45 @@ button {
 
 .contact-image-wrapper {
     position: relative;
-    border-radius: var(--radius-lg);
+    height: 100%;
     overflow: hidden;
-    box-shadow: var(--shadow-xl);
-    border: 3px solid #e5e7eb;
 }
 
 .contact-image-wrapper img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     display: block;
 }
 
 .contact-home-right {
     background: #f5f5dc;
-    padding: var(--spacing-2xl);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
+    padding: 50px 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contact-home-right .section-tag {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    display: block;
 }
 
 .contact-home-right .section-title {
-    font-size: 2.25rem;
+    font-size: 2.5rem;
     font-family: var(--font-primary);
     font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: var(--spacing-xl);
+    color: #1a1a1a;
+    margin-bottom: 30px;
     line-height: 1.2;
 }
 
 .contact-home-form {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
+    gap: 18px;
 }
 
 .contact-home-form .form-group {
@@ -1129,13 +1142,19 @@ button {
 .contact-home-form input,
 .contact-home-form textarea {
     width: 100%;
-    padding: var(--spacing-md);
-    border: 1px solid #d1d5db;
-    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
     font-size: 1rem;
     font-family: var(--font-secondary);
     background: var(--bg-white);
     transition: var(--transition-base);
+    color: #333;
+}
+
+.contact-home-form input::placeholder,
+.contact-home-form textarea::placeholder {
+    color: #666;
 }
 
 .contact-home-form input:focus,
@@ -1147,7 +1166,8 @@ button {
 
 .contact-home-form textarea {
     resize: vertical;
-    min-height: 80px;
+    min-height: 100px;
+    font-family: var(--font-secondary);
 }
 
 .btn-success {
