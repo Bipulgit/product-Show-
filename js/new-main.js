@@ -105,6 +105,7 @@ function initializeNavigation() {
     const navMenu = document.getElementById('navMenu');
     const navLinks = document.querySelectorAll('.nav-link');
     const header = document.querySelector('.header');
+    const dropdowns = document.querySelectorAll('.dropdown');
     
     console.log('Initializing navigation...', {
         navToggle: navToggle,
@@ -125,14 +126,55 @@ function initializeNavigation() {
         console.error('Navigation elements not found!');
     }
     
-    // Close mobile menu when clicking on a link
+    // Dropdown functionality for mobile
+    dropdowns.forEach(dropdown => {
+        const toggle = dropdown.querySelector('.dropdown-toggle');
+        const menu = dropdown.querySelector('.dropdown-menu');
+        
+        if (toggle && menu) {
+            // For mobile - toggle dropdown on click
+            toggle.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                    
+                    // Close other dropdowns
+                    dropdowns.forEach(otherDropdown => {
+                        if (otherDropdown !== dropdown) {
+                            otherDropdown.classList.remove('active');
+                        }
+                    });
+                }
+            });
+        }
+    });
+    
+    // Close mobile menu when clicking on a link (except dropdown toggles)
     navLinks.forEach(link => {
+        if (!link.classList.contains('dropdown-toggle')) {
+            link.addEventListener('click', () => {
+                if (navToggle && navMenu) {
+                    navToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+    });
+    
+    // Close dropdown menu items on click (mobile)
+    document.querySelectorAll('.dropdown-menu a').forEach(link => {
         link.addEventListener('click', () => {
             if (navToggle && navMenu) {
                 navToggle.classList.remove('active');
                 navMenu.classList.remove('active');
                 document.body.style.overflow = '';
             }
+            
+            // Close all dropdowns
+            dropdowns.forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
         });
     });
     
@@ -379,6 +421,9 @@ function initLazyLoading() {
 
 // Initialize all features when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize navigation first
+    initializeNavigation();
+    
     // Wait for DOM to be fully ready before initializing slider
     setTimeout(() => {
         initHeroSlider();
