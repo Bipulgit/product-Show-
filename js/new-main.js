@@ -128,30 +128,37 @@ function initializeNavigation() {
     
     // Dropdown functionality for mobile
     dropdowns.forEach(dropdown => {
-        const toggle = dropdown.querySelector('.dropdown-toggle');
+        const toggle = dropdown.querySelector('.nav-link');
         const menu = dropdown.querySelector('.dropdown-menu');
+        const icon = dropdown.querySelector('.dropdown-icon');
         
         if (toggle && menu) {
-            // For mobile - toggle dropdown on click
+            // For mobile/tablet - toggle dropdown on click
             toggle.addEventListener('click', (e) => {
                 if (window.innerWidth <= 768) {
                     e.preventDefault();
-                    dropdown.classList.toggle('active');
+                    
+                    // Toggle active state
+                    const isActive = dropdown.classList.contains('active');
                     
                     // Close other dropdowns
                     dropdowns.forEach(otherDropdown => {
-                        if (otherDropdown !== dropdown) {
-                            otherDropdown.classList.remove('active');
-                        }
+                        otherDropdown.classList.remove('active');
                     });
+                    
+                    // Toggle current dropdown
+                    if (!isActive) {
+                        dropdown.classList.add('active');
+                    }
                 }
             });
         }
     });
     
-    // Close mobile menu when clicking on a link (except dropdown toggles)
+    // Close mobile menu when clicking on a link (except dropdown parent links)
     navLinks.forEach(link => {
-        if (!link.classList.contains('dropdown-toggle')) {
+        const isDropdownParent = link.parentElement.classList.contains('dropdown');
+        if (!isDropdownParent) {
             link.addEventListener('click', () => {
                 if (navToggle && navMenu) {
                     navToggle.classList.remove('active');
