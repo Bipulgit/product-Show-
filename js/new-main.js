@@ -292,8 +292,19 @@ function initFormValidation() {
             if (isValid) {
                 // Form is valid, submit it
                 console.log('Form submitted successfully');
-                form.reset();
-                showSuccessMessage();
+                
+                // Store form data for tracking (optional)
+                const formData = new FormData(form);
+                const formObject = {};
+                formData.forEach((value, key) => {
+                    formObject[key] = value;
+                });
+                
+                // You can send data to analytics or backend here
+                console.log('Form data:', formObject);
+                
+                // Redirect to thank you page
+                window.location.href = 'thank-you.html';
             }
         });
         
