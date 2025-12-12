@@ -1,0 +1,76 @@
+[05-Dec-2025 05:51:31 UTC] PHPMailer: SMTP ERROR: Failed to connect to server: Cannot assign requested address (99)
+[05-Dec-2025 05:51:31 UTC] PHPMailer: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+[05-Dec-2025 05:51:31 UTC] Mail Error: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+[05-Dec-2025 05:51:49 UTC] PHPMailer: SMTP ERROR: Failed to connect to server: Cannot assign requested address (99)
+[05-Dec-2025 05:51:49 UTC] PHPMailer: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+[05-Dec-2025 05:51:49 UTC] Mail Error: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+[05-Dec-2025 05:52:02 UTC] PHPMailer: SMTP ERROR: Failed to connect to server: Cannot assign requested address (99)
+[05-Dec-2025 05:52:02 UTC] PHPMailer: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+[05-Dec-2025 05:52:02 UTC] Mail Error: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+[05-Dec-2025 05:56:34 UTC] PHPMailer: SMTP ERROR: Failed to connect to server: Cannot assign requested address (99)
+[05-Dec-2025 05:56:34 UTC] PHPMailer: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+[05-Dec-2025 05:56:34 UTC] Mail Error: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+[05-Dec-2025 06:00:31 UTC] PHP Fatal error:  Uncaught Error: Class "PHPMailer\PHPMailer\PHPMailer" not found in /home/techotdc/plastoproof.com/send-mail-new.php:77
+Stack trace:
+#0 {main}
+  thrown in /home/techotdc/plastoproof.com/send-mail-new.php on line 77
+[05-Dec-2025 06:01:01 UTC] PHP Fatal error:  Uncaught Error: Class "PHPMailer\PHPMailer\PHPMailer" not found in /home/techotdc/plastoproof.com/send-mail-new.php:77
+Stack trace:
+#0 {main}
+  thrown in /home/techotdc/plastoproof.com/send-mail-new.php on line 77
+[05-Dec-2025 06:39:33 UTC] PHPMailer send error: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+[05-Dec-2025 07:20:21 UTC] PHPMailer send error: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+[05-Dec-2025 07:33:04 UTC] PHP Warning:  require(PHPMailer/src/PHPMailer.php): Failed to open stream: No such file or directory in /home/techotdc/plastoproof.com/test-mail.php on line 6
+[05-Dec-2025 07:33:04 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'PHPMailer/src/PHPMailer.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/techotdc/plastoproof.com/test-mail.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/techotdc/plastoproof.com/test-mail.php on line 6
+[05-Dec-2025 07:33:04 UTC] PHP Warning:  require(PHPMailer/src/PHPMailer.php): Failed to open stream: No such file or directory in /home/techotdc/plastoproof.com/test-mail.php on line 6
+[05-Dec-2025 07:33:04 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'PHPMailer/src/PHPMailer.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/techotdc/plastoproof.com/test-mail.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/techotdc/plastoproof.com/test-mail.php on line 6
+[05-Dec-2025 07:33:04 UTC] PHP Warning:  require(PHPMailer/src/PHPMailer.php): Failed to open stream: No such file or directory in /home/techotdc/plastoproof.com/test-mail.php on line 6
+[05-Dec-2025 07:33:04 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'PHPMailer/src/PHPMailer.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/techotdc/plastoproof.com/test-mail.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/techotdc/plastoproof.com/test-mail.php on line 6
+[05-Dec-2025 07:33:05 UTC] PHP Warning:  require(PHPMailer/src/PHPMailer.php): Failed to open stream: No such file or directory in /home/techotdc/plastoproof.com/test-mail.php on line 6
+[05-Dec-2025 07:33:05 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'PHPMailer/src/PHPMailer.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/techotdc/plastoproof.com/test-mail.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/techotdc/plastoproof.com/test-mail.php on line 6
+[05-Dec-2025 07:33:05 UTC] PHP Warning:  require(PHPMailer/src/PHPMailer.php): Failed to open stream: No such file or directory in /home/techotdc/plastoproof.com/test-mail.php on line 6
+[05-Dec-2025 07:33:05 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'PHPMailer/src/PHPMailer.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/techotdc/plastoproof.com/test-mail.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/techotdc/plastoproof.com/test-mail.php on line 6
+[05-Dec-2025 07:33:05 UTC] PHP Warning:  require(PHPMailer/src/PHPMailer.php): Failed to open stream: No such file or directory in /home/techotdc/plastoproof.com/test-mail.php on line 6
+[05-Dec-2025 07:33:05 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'PHPMailer/src/PHPMailer.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/techotdc/plastoproof.com/test-mail.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/techotdc/plastoproof.com/test-mail.php on line 6
+[05-Dec-2025 07:33:05 UTC] PHP Warning:  require(PHPMailer/src/PHPMailer.php): Failed to open stream: No such file or directory in /home/techotdc/plastoproof.com/test-mail.php on line 6
+[05-Dec-2025 07:33:05 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'PHPMailer/src/PHPMailer.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/techotdc/plastoproof.com/test-mail.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/techotdc/plastoproof.com/test-mail.php on line 6
+[05-Dec-2025 07:33:11 UTC] PHP Warning:  require(PHPMailer/src/PHPMailer.php): Failed to open stream: No such file or directory in /home/techotdc/plastoproof.com/test-mail.php on line 6
+[05-Dec-2025 07:33:11 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'PHPMailer/src/PHPMailer.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/techotdc/plastoproof.com/test-mail.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/techotdc/plastoproof.com/test-mail.php on line 6
+[05-Dec-2025 09:01:27 UTC] PHPMailer error: SMTP Error: Could not authenticate.
+[05-Dec-2025 09:10:28 UTC] PHPMailer error: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+[05-Dec-2025 09:12:49 UTC] PHPMailer error: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+[06-Dec-2025 05:38:52 UTC] PHPMailer error: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+[08-Dec-2025 05:10:51 UTC] PHPMailer error: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+[08-Dec-2025 05:11:35 UTC] PHPMailer error: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+[08-Dec-2025 05:28:08 UTC] PHPMailer error: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+[08-Dec-2025 05:30:02 UTC] PHPMailer error: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+[08-Dec-2025 05:36:05 UTC] PHPMailer error: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+[08-Dec-2025 06:17:42 UTC] PHPMailer error: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+[08-Dec-2025 06:33:32 UTC] PHPMailer error: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+[08-Dec-2025 06:34:47 UTC] PHPMailer error: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+[08-Dec-2025 06:35:14 UTC] PHPMailer error: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+[08-Dec-2025 06:38:36 UTC] PHPMailer error: SMTP Error: Could not connect to SMTP host. Failed to connect to server

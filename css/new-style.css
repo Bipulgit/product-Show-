@@ -937,6 +937,8 @@ button {
     cursor: pointer;
     display: flex;
     flex-direction: column;
+    text-decoration: none;
+    color: inherit;
 }
 
 .product-home-card:hover {
@@ -977,6 +979,33 @@ button {
     margin: 0;
     background: white;
     border-top: 1px solid #e5e7eb;
+}
+
+.product-view-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: var(--spacing-lg);
+    background: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    transition: all 0.3s ease;
+    margin-top: auto;
+}
+
+.product-view-details i {
+    transition: transform 0.3s ease;
+    font-size: 0.875rem;
+}
+
+.product-home-card:hover .product-view-details {
+    background: #1e40af;
+}
+
+.product-home-card:hover .product-view-details i {
+    transform: translateX(5px);
 }
 
 /* ===================================
@@ -1381,6 +1410,69 @@ button {
 .contact-home-form textarea {
     resize: vertical;
     min-height: 100px;
+    font-family: var(--font-secondary);
+}
+
+/* ===================================
+   Common Contact Form Component
+   =================================== */
+.common-contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    width: 100%;
+}
+
+.common-contact-form .form-group {
+    width: 100%;
+}
+
+.common-contact-form label {
+    display: block;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-sm);
+    font-size: 0.9375rem;
+}
+
+.common-contact-form .required {
+    color: #dc2626;
+    margin-left: 2px;
+}
+
+.common-contact-form input,
+.common-contact-form textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-family: var(--font-secondary);
+    background: var(--bg-white);
+    transition: var(--transition-base);
+    color: var(--text-dark);
+}
+
+.common-contact-form input::placeholder,
+.common-contact-form textarea::placeholder {
+    color: #9ca3af;
+}
+
+.common-contact-form input:focus,
+.common-contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.common-contact-form input.error,
+.common-contact-form textarea.error {
+    border-color: #dc2626;
+}
+
+.common-contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
     font-family: var(--font-secondary);
 }
 
@@ -2719,6 +2811,27 @@ button {
     width: auto;
 }
 
+/* White rounded panel behind logo (reference style) */
+.logo-wrap {
+    display: inline-block;
+    background: #ffffff;
+    padding: 8px 12px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(2,6,23,0.35);
+    border: 1px solid rgba(0,0,0,0.06);
+}
+
+.logo-wrap img {
+    display: block;
+    height: 40px; /* the visible logo height inside the white panel */
+    width: auto;
+}
+
+@media (max-width: 768px) {
+    .logo-wrap { padding: 6px 10px; border-radius: 8px; }
+    .logo-wrap img { height: 34px; }
+}
+
 .footer-desc {
     color: rgba(255, 255, 255, 0.8);
     margin-bottom: var(--spacing-md);
@@ -3569,7 +3682,7 @@ button {
 .modal-close {
     position: absolute;
     top: 20px;
-    left: 20px;
+    right: 20px;
     background: none;
     border: none;
     color: #6b7280;
@@ -3677,7 +3790,7 @@ button {
     
     .modal-close {
         top: 16px;
-        left: 16px;
+        right: 16px;
     }
 }
 

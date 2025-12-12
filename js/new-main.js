@@ -339,21 +339,72 @@ function initFormValidation() {
             });
             
             if (isValid) {
-                // Form is valid, submit it
+                // Form is valid, submit via AJAX to backend if marked
                 console.log('Form submitted successfully');
-                
-                // Store form data for tracking (optional)
-                const formData = new FormData(form);
-                const formObject = {};
-                formData.forEach((value, key) => {
-                    formObject[key] = value;
-                });
-                
-                // You can send data to analytics or backend here
-                console.log('Form data:', formObject);
-                
-                // Redirect to thank you page
-                window.location.href = 'thank-you.html';
+                const shouldSend = form.dataset.sendMail === 'true' || ['contactForm', 'enquiryForm', 'contactHomeForm'].includes(form.id) || form.classList.contains('contact-home-form');
+
+                if (shouldSend) {
+                    const formData = new FormData(form);
+                    
+                    // Show loading state
+                    const submitBtn = form.querySelector('button[type="submit"], input[type="submit"]');
+                    const originalBtnText = submitBtn ? submitBtn.textContent : '';
+                    if (submitBtn) {
+                        submitBtn.disabled = true;
+                        submitBtn.textContent = 'Sending...';
+                    }
+                    
+                    fetch('send-email.php', { method: 'POST', body: formData })
+                        .then(res => {
+                            if (!res.ok) {
+                                throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+                            }
+                            return res.json();
+                        })
+                        .then(data => {
+                            // Reset button state
+                            if (submitBtn) {
+                                submitBtn.disabled = false;
+                                submitBtn.textContent = originalBtnText;
+                            }
+                            
+                            if (data && data.success) {
+                                showSuccessMessage(data.message || 'Form submitted successfully');
+                                form.reset();
+                                const popup = document.getElementById('enquiryPopup');
+                                if (popup && popup.classList.contains('active')) {
+                                    popup.classList.remove('active');
+                                    document.body.style.overflow = '';
+                                }
+                                // Only redirect to thank-you page if email was sent successfully
+                                setTimeout(() => {
+                                    window.location.href = 'thank-you.html';
+                                }, 1500);
+                            } else {
+                                // Show debug info if available
+                                let errorMsg = (data && data.message) ? data.message : 'Failed to send email.';
+                                if (data && data.debug) {
+                                    console.error('Email Debug Info:', data.debug);
+                                    errorMsg += '\n\nDebug Info:\n' + JSON.stringify(data.debug, null, 2);
+                                }
+                                alert(errorMsg);
+                            }
+                        })
+                        .catch(err => {
+                            console.error('Network/Parse Error:', err);
+                            
+                            // Reset button state
+                            if (submitBtn) {
+                                submitBtn.disabled = false;
+                                submitBtn.textContent = originalBtnText;
+                            }
+                            
+                            alert('Network error: ' + err.message + '\nPlease check your internet connection and try again.');
+                        });
+                } else {
+                    // Not a server-submitted form: redirect to the thank you page
+                    window.location.href = 'thank-you.html';
+                }
             }
         });
         
@@ -527,30 +578,7 @@ function initEnquiryPopup() {
             });
         }
         
-        // Handle form submission
-        if (modalForm) {
-            modalForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                // Get form values
-                const formData = {
-                    name: document.getElementById('enquiryName').value,
-                    email: document.getElementById('enquiryEmail').value,
-                    contact: document.getElementById('enquiryContact').value,
-                    company: document.getElementById('enquiryCompany').value
-                };
-                
-                // Here you can add AJAX call to submit form data
-                console.log('Enquiry submitted:', formData);
-                
-                // Show success message
-                showSuccessMessage('Enquiry submitted successfully! We will contact you soon.');
-                
-                // Reset form and close popup
-                modalForm.reset();
-                closePopup();
-            });
-        }
+        // Form submission is handled centrally in initFormValidation()
         
         // Close on Escape key
         document.addEventListener('keydown', (e) => {
