@@ -184,6 +184,32 @@ function initializeNavigation() {
             });
         });
     });
+
+    // Submenu toggle: handle items with nested submenu inside dropdowns
+    document.querySelectorAll('.dropdown-menu .has-submenu').forEach(item => {
+        const link = item.querySelector('a');
+        const submenu = item.querySelector('.submenu');
+
+        if (!link) return;
+
+        link.addEventListener('click', (e) => {
+            // Prevent navigation when toggling submenu
+            e.preventDefault();
+
+            const isOpen = item.classList.contains('open');
+
+            // Close other open submenus
+            document.querySelectorAll('.dropdown-menu .has-submenu.open').forEach(other => {
+                if (other !== item) other.classList.remove('open');
+            });
+
+            if (!isOpen) {
+                item.classList.add('open');
+            } else {
+                item.classList.remove('open');
+            }
+        });
+    });
     
     // Header scroll effect
     if (header) {

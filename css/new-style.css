@@ -2,16 +2,16 @@
    CSS Variables & Reset
    =================================== */
 :root {
-    /* Colors */
-    --primary-color: #6366f1;
-    --primary-dark: #4f46e5;
-    --primary-light: #818cf8;
-    --secondary-color: #f59e0b;
-    --accent-color: #ec4899;
-    
-    --text-dark: #1f2937;
-    --text-medium: #4b5563;
-    --text-light: #6b7280;
+    /* Brand Colors (from PlastoProof logo) */
+    --primary-color: #0B67A3; /* main blue */
+    --primary-dark: #084E78; /* darker blue for depth */
+    --primary-light: #2E92D1; /* lighter blue for highlights */
+    --secondary-color: #00B4E6; /* droplet / accent cyan */
+    --accent-color: #1FB6E5; /* complementary accent */
+
+    --text-dark: #122232;
+    --text-medium: #3f5666;
+    --text-light: #6b7f8f;
     --text-white: #ffffff;
     
     --bg-white: #ffffff;
@@ -429,6 +429,46 @@ button {
     background: var(--bg-light);
     color: var(--primary-color);
     padding-left: calc(var(--spacing-lg) + 0.5rem);
+}
+
+/* Nested submenu (inside dropdown) */
+.dropdown-menu .has-submenu {
+    position: relative;
+}
+
+.dropdown-menu .has-submenu > a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dropdown-menu .submenu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    min-width: 180px;
+    background: var(--bg-white);
+    box-shadow: var(--shadow-md);
+    border-radius: 6px;
+    padding: 0.5rem 0;
+    z-index: 1500;
+}
+
+.dropdown-menu .submenu li a {
+    padding: 0.75rem 1rem;
+    color: var(--text-medium);
+    font-weight: 500;
+}
+
+.dropdown-menu .has-submenu.open > .submenu {
+    display: block;
+}
+
+/* Submenu icon */
+.submenu-icon {
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
 }
 
 /* Adjust underline for dropdown link to leave space for chevron */
