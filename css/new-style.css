@@ -1,3 +1,35 @@
+/* Improved FAQ bullet points */
+.faq-bullets {
+    list-style: none;
+    padding-left: 0;
+    margin: 16px 0 16px 0;
+}
+.faq-bullets li {
+    position: relative;
+    margin-bottom: 14px;
+    padding-left: 28px;
+    font-size: 1.08em;
+}
+.faq-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #0B67A3;
+    box-shadow: 0 0 0 2px #fff;
+    display: block;
+}
+/* FAQ Accordion Styles */
+.faq-answer {
+    display: none;
+    padding: 0 0 1rem 0;
+}
+.faq-item.active .faq-answer {
+    display: block;
+}
 /* ===================================
    CSS Variables & Reset
    =================================== */
@@ -1085,7 +1117,7 @@ button {
 .certifications-grid-home {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0;
+    gap: 12px; /* small gaps so blue background shows between certificates */
     background: #002b5c;
     padding: var(--spacing-xl) var(--spacing-lg);
 }
