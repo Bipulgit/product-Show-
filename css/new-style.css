@@ -136,6 +136,7 @@ button {
     font-weight: 700;
     margin-bottom: var(--spacing-sm);
     color: var(--text-dark);
+    text-align: center; /* center section headings site-wide */
 }
 
 .section-subtitle {
