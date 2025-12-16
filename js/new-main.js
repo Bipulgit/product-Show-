@@ -170,14 +170,21 @@ function initializeNavigation() {
     });
     
     // Close dropdown menu items on click (mobile)
+    // Skip toggle links (submenu-toggle) so they can open submenus without closing the whole menu
     document.querySelectorAll('.dropdown-menu a').forEach(link => {
-        link.addEventListener('click', () => {
+        link.addEventListener('click', (e) => {
+            // If this link is a submenu toggle or a javascript placeholder, ignore here
+            const href = link.getAttribute('href');
+            if (link.classList.contains('submenu-toggle') || (href && href.startsWith('javascript'))) {
+                return;
+            }
+
             if (navToggle && navMenu) {
                 navToggle.classList.remove('active');
                 navMenu.classList.remove('active');
                 document.body.style.overflow = '';
             }
-            
+
             // Close all dropdowns
             dropdowns.forEach(dropdown => {
                 dropdown.classList.remove('active');
@@ -186,13 +193,12 @@ function initializeNavigation() {
     });
 
     // Submenu toggle: handle items with nested submenu inside dropdowns
+    // Support both clicking the parent <a> or a dedicated `.submenu-toggle`
     document.querySelectorAll('.dropdown-menu .has-submenu').forEach(item => {
         const link = item.querySelector('a');
-        const submenu = item.querySelector('.submenu');
+        const toggle = item.querySelector('.submenu-toggle');
 
-        if (!link) return;
-
-        link.addEventListener('click', (e) => {
+        const handleToggle = (e) => {
             // Prevent navigation when toggling submenu
             e.preventDefault();
 
@@ -205,10 +211,21 @@ function initializeNavigation() {
 
             if (!isOpen) {
                 item.classList.add('open');
+                if (toggle) toggle.setAttribute('aria-expanded', 'true');
             } else {
                 item.classList.remove('open');
+                if (toggle) toggle.setAttribute('aria-expanded', 'false');
             }
-        });
+        };
+
+        if (toggle) {
+            toggle.addEventListener('click', handleToggle);
+        }
+
+        // Fallback: if there is no .submenu-toggle, allow clicking the first anchor to toggle
+        if (!toggle && link) {
+            link.addEventListener('click', handleToggle);
+        }
     });
     
     // Header scroll effect
