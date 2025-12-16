@@ -358,8 +358,8 @@ button {
 }
 
 .logo-img {
-    height: 120px;
-    width: 140px;
+    height: 90px;
+    width: auto;
 }
 
 .nav-toggle {
