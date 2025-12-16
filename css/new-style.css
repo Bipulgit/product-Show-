@@ -4557,7 +4557,7 @@ button {
 }
 
 /* Reduce vertical spacing inside a product card to avoid large gaps */
-.product-detail-card .product-benefits,
+/* .product-detail-card .product-benefits,
 .product-detail-card .best-suited,
 .product-detail-card .why-choose-section {
     margin-top: var(--spacing-lg);
@@ -4567,10 +4567,51 @@ button {
 .product-detail-card .best-suited h3,
 .product-detail-card .why-choose-section h3 {
     margin-bottom: var(--spacing-md);
+} */
+
+/* .product-detail-card .benefits-list {
+    margin-bottom: var(--spacing-md);
+} */
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xl);
 }
 
-.product-detail-card .benefits-list {
-    margin-bottom: var(--spacing-md);
+.benefit-item {
+    background: #f8f9fa;
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-md);
+    border-left: 4px solid #10b981;
+    transition: var(--transition-base);
+}
+
+.benefit-item:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow-md);
+}
+
+.benefit-item h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.benefit-item h4 i {
+    color: #10b981;
+    font-size: 1.25rem;
+}
+
+.benefit-item p {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--text-medium);
+    margin: 0;
 }
 
 /* Styled bullet lists for product pages */
