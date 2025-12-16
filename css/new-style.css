@@ -4556,6 +4556,114 @@ button {
     margin-bottom: var(--spacing-xl);
 }
 
+/* Reduce vertical spacing inside a product card to avoid large gaps */
+.product-detail-card .product-benefits,
+.product-detail-card .best-suited,
+.product-detail-card .why-choose-section {
+    margin-top: var(--spacing-lg);
+}
+
+.product-detail-card .product-benefits h3,
+.product-detail-card .best-suited h3,
+.product-detail-card .why-choose-section h3 {
+    margin-bottom: var(--spacing-md);
+}
+
+.product-detail-card .benefits-list {
+    margin-bottom: var(--spacing-md);
+}
+
+/* Styled bullet lists for product pages */
+.benefits-list {
+    list-style: none; /* reset global none */
+    padding-left: 0;
+    margin: 0 0 var(--spacing-lg) 0;
+}
+
+.benefits-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.85rem;
+    color: var(--text-medium);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+}
+
+.benefits-list li::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-top: 0.6rem;
+    border-radius: 50%;
+    background: var(--primary-color);
+    flex: 0 0 10px;
+}
+
+.benefits-list h3 + .benefits-list,
+.product-benefits .benefits-list {
+    margin-top: 0.5rem;
+}
+
+/* Two-column layout for benefits on large screens */
+.benefits-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+    align-items: start;
+}
+
+.benefits-column {
+    background: #fbfcfe;
+    padding: calc(var(--spacing-md) + 6px);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.benefits-column h3 {
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+}
+
+.benefits-list li {
+    transition: transform 0.18s ease, color 0.18s ease;
+}
+
+.benefits-list li:hover {
+    transform: translateX(4px);
+    color: #0f1724;
+}
+
+@media (max-width: 900px) {
+    .benefits-columns {
+        grid-template-columns: 1fr;
+    }
+    .benefits-column {
+        background: transparent;
+        padding: 0;
+        box-shadow: none;
+    }
+    .benefits-list li::before { margin-top: 0.35rem; }
+}
+
+/* Why choose block (placed under benefits) */
+.why-choose-section {
+    margin-top: var(--spacing-md);
+    padding: calc(var(--spacing-md) + 4px);
+    background: #fbfcfe;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.why-choose-section h3 {
+    margin-top: 0;
+    margin-bottom: calc(var(--spacing-sm) + 4px);
+    color: #1e40af;
+}
+
+.why-choose-section .benefits-list { margin-bottom: 0; }
+
 .benefits-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
