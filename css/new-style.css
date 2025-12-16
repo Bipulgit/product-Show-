@@ -768,6 +768,43 @@ button {
         padding-top: var(--spacing-sm) !important;
         padding-bottom: var(--spacing-sm) !important;
     }
+
+    /* Mobile submenu styling - make it collapse/expand smoothly */
+    .dropdown-menu .submenu {
+        position: static !important;
+        left: auto !important;
+        top: auto !important;
+        width: 100% !important;
+        box-shadow: none !important;
+        background: rgba(0, 0, 0, 0.03) !important;
+        border-radius: 4px !important;
+        margin-left: 0 !important;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.28s ease, padding 0.28s ease;
+        padding: 0 !important;
+    }
+
+    .dropdown-menu .has-submenu.open > .submenu {
+        display: block;
+        max-height: 200px;
+        padding: 0.5rem 0 !important;
+        margin-top: 0.25rem;
+    }
+
+    .dropdown-menu .submenu li a {
+        padding-left: 2rem !important;
+        font-size: 0.875rem !important;
+    }
+
+    /* Rotate submenu chevron on mobile */
+    .submenu-icon {
+        transition: transform 0.28s ease;
+    }
+
+    .has-submenu.open .submenu-icon {
+        transform: rotate(90deg);
+    }
 }
 
 /* ===================================
