@@ -1,3 +1,43 @@
+/* About Intro Two-Column Layout */
+.about-intro-grid {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+.about-intro-left {
+    flex: 1 1 340px;
+    min-width: 260px;
+}
+.about-intro-right {
+    flex: 1 1 340px;
+    min-width: 260px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.about-intro-image {
+    max-width: 500px;
+    width: 100%;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+    object-fit: cover;
+}
+@media (max-width: 900px) {
+    .about-intro-grid {
+        flex-direction: column;
+        gap: 0;
+    }
+    .about-intro-image {
+        max-width: 100%;
+    }
+}
+
+/* Reduce bottom padding for about-intro section */
+.about-intro.section-padding {
+    padding-bottom: 20px;
+}
+
 /* Compact but original look for benefit cards */
 
 /* Show submenu on hover for desktop */
@@ -1009,12 +1049,18 @@ button {
    =================================== */
 .about-home {
     background: var(--bg-light);
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+}
+
+.about-home .section-header {
+    margin-bottom: 20px;
 }
 
 .about-home-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-3xl);
+    gap: 30px;
     align-items: center;
 }
 
@@ -1049,18 +1095,18 @@ button {
 
 .experience-badge {
     position: absolute;
-    bottom: -30px;
-    right: 40px;
+    bottom: -20px;
+    right: 30px;
     background: linear-gradient(135deg, #10b981, #059669);
-    padding: var(--spacing-xl);
+    padding: 15px 20px;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-xl);
     text-align: center;
-    min-width: 180px;
+    min-width: 130px;
 }
 
 .experience-number {
-    font-size: 4rem;
+    font-size: 2.5rem;
     font-weight: 700;
     color: var(--text-white);
     line-height: 1;
@@ -1069,8 +1115,8 @@ button {
 
 .experience-text {
     color: var(--text-white);
-    font-size: 0.875rem;
-    margin-top: var(--spacing-xs);
+    font-size: 0.75rem;
+    margin-top: 5px;
     font-weight: 500;
 }
 
@@ -1134,6 +1180,7 @@ button {
    =================================== */
 .products-home {
     background: white;
+    padding-top: 30px !important;
 }
 
 .products-home .section-header {
@@ -1233,6 +1280,7 @@ button {
    =================================== */
 .awards-certifications-home {
     background: #f8f9fa;
+    padding-bottom: 25px !important;
 }
 
 .awards-certifications-home .section-header {
@@ -1374,6 +1422,8 @@ button {
    =================================== */
 .clients-home {
     background: #f8f9fa;
+    padding-top: 15px !important;
+    padding-bottom: 30px !important;
 }
 
 .clients-home .section-header {
@@ -1448,6 +1498,7 @@ button {
    =================================== */
 .faq-home {
     background: #f8f9fa;
+    padding-top: 30px !important;
 }
 
 .faq-home .section-header {
