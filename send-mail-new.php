@@ -69,8 +69,9 @@ $smtpConfig = file_exists($configPath) ? include $configPath : [];
 $host = $smtpConfig['host'] ?? 'smtp.gmail.com';
 $port = $smtpConfig['port'] ?? 587;
 $secure = $smtpConfig['secure'] ?? 'tls';
+// Old: sharmakirti59822@gmail.com / onfl uysd fldz jqgy
 $username = $smtpConfig['username'] ?? 'enquiry@plastoproof.com';
-$password = $smtpConfig['password'] ?? 'ynjh xnvw aabz ulja';
+$password = $smtpConfig['password'] ?? 'jizb wvhu bpru hwku';
 $from_email = $smtpConfig['from_email'] ?? $username;
 $from_name = $smtpConfig['from_name'] ?? 'Plastoproof Website';
 $to_email = $smtpConfig['to_email'] ?? 'enquiry@plastoproof.com';
@@ -135,10 +136,7 @@ try {
             $logFile = __DIR__ . '/enquiries.log';
             file_put_contents($logFile, $emailContent, FILE_APPEND | LOCK_EX);
             
-            // echo json_encode(['success' => true, 'message' => 'धन्यवाद! आपका संदेश सफलतापूर्वक भेज दिया गया है।']);
-            // echo json_encode(['success' => true, 'message' => 'Thank you! Your message has been sent successfully.']);
-            // echo json_encode(['success' => true, 'message' => '']);
-            echo json_encode(['success' => true]);
+            echo json_encode(['success' => true, 'message' => 'Thank you! Your message has been sent successfully.']);
         } else {
             throw new Exception('Email could not be sent');
         }
@@ -174,10 +172,7 @@ try {
             $logFile = __DIR__ . '/enquiries.log';
             file_put_contents($logFile, $emailContent, FILE_APPEND | LOCK_EX);
             
-            // echo json_encode(['success' => true, 'message' => 'धन्यवाद! आपका संदेश सफलतापूर्वक भेज दिया गया है।']);
-            // echo json_encode(['success' => true, 'message' => 'Thank you! Your message has been sent successfully.']);
-            // echo json_encode(['success' => true, 'message' => '']);
-            echo json_encode(['success' => true]);
+            echo json_encode(['success' => true, 'message' => 'Thank you! Your message has been sent successfully.']);
         } else {
             throw new Exception('Built-in mail() function failed');
         }

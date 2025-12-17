@@ -55,11 +55,12 @@ $config = file_exists(__DIR__ . '/config/smtp.php') ? include __DIR__ . '/config
 
 $smtpHost = $config['host'] ?? 'smtp.gmail.com';
 $smtpPort = $config['port'] ?? 587;
-$smtpUser = $config['username'] ?? 'sharmakirti59822@gmail.com';
-$smtpPass = $config['password'] ?? 'ybpb elqt haps brrs';
+// Old: sharmakirti59822@gmail.com / onfl uysd fldz jqgy
+$smtpUser = $config['username'] ?? 'enquiry@plastoproof.com';
+$smtpPass = $config['password'] ?? 'jizb wvhu bpru hwku';
 $fromEmail = $config['from_email'] ?? $smtpUser;
 $fromName = $config['from_name'] ?? 'Plastoproof Website';
-$toEmail = $config['to_email'] ?? 'sharmakirti59822@gmail.com';
+$toEmail = $config['to_email'] ?? 'enquiry@plastoproof.com';
 
 // Prepare email
 $subject = 'Website Enquiry from ' . $name;
@@ -107,6 +108,10 @@ if (class_exists('PHPMailer\\PHPMailer\\PHPMailer')) {
         $mail->Body = $body;
         
         if ($mail->send()) {
+            // Save to log file for backup
+            $logFile = __DIR__ . '/enquiries.log';
+            file_put_contents($logFile, $body . "\n", FILE_APPEND | LOCK_EX);
+            
             echo json_encode(['success' => true, 'message' => 'Thank you! Your message has been sent successfully.']);
             exit;
         }
@@ -122,6 +127,10 @@ $headers .= "Reply-To: $name <$email>\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
 if (mail($toEmail, $subject, $body, $headers)) {
+    // Save to log file for backup
+    $logFile = __DIR__ . '/enquiries.log';
+    file_put_contents($logFile, $body . "\n", FILE_APPEND | LOCK_EX);
+    
     echo json_encode(['success' => true, 'message' => 'Thank you! Your message has been sent successfully.']);
 } else {
     http_response_code(500);
