@@ -7,8 +7,10 @@ return [
     'host' => getenv('SMTP_HOST') ?: 'smtp.gmail.com',
     'port' => getenv('SMTP_PORT') ?: 587,
     'secure' => getenv('SMTP_SECURE') ?: 'tls',
+    
+    // Old email (commented): sharmakirti59822@gmail.com / onfl uysd fldz jqgy
     'username' => getenv('SMTP_USER') ?: 'enquiry@plastoproof.com',
-    'password' => getenv('SMTP_PASS') ?: 'ynjh xnvw aabz ulja',
+    'password' => getenv('SMTP_PASS') ?: 'jizb wvhu bpru hwku',
     'from_email' => getenv('SMTP_FROM') ?: (getenv('SMTP_USER') ?: 'enquiry@plastoproof.com'),
     'from_name' => getenv('SMTP_FROM_NAME') ?: 'Plastoproof Website',
     // Default recipient: change via env var SMTP_TO in production if desired
