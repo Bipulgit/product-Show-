@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap (update domain if different)
+Sitemap: https://www.plastoproof.com/sitemap.xml
