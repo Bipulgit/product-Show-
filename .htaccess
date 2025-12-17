@@ -1,0 +1,14 @@
+# Redirect HTTP to HTTPS
+RewriteEngine On
+
+# If behind a proxy or load balancer that sets X-Forwarded-Proto, uncomment next two lines
+# RewriteCond %{HTTP:X-Forwarded-Proto} !https
+# RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Redirect direct non-HTTPS requests
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Optional: force www (uncomment to enable)
+# RewriteCond %{HTTP_HOST} !^www\. [NC]
+# RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
