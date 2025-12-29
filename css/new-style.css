@@ -3201,6 +3201,7 @@ button {
     height: 50px;
     background: var(--primary-color);
     color: var(--text-white);
+    border: none;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -3209,6 +3210,7 @@ button {
     opacity: 0;
     visibility: hidden;
     transition: var(--transition-base);
+    cursor: pointer;
     z-index: 999;
 }
 
