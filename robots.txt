@@ -1,5 +1,23 @@
+# Robots.txt for Plastoproof
+# Updated: December 30, 2025
+
+# Allow all search engines
 User-agent: *
 Allow: /
 
-# Sitemap (update domain if different)
+# Disallow access to specific directories
+Disallow: /vendor/
+Disallow: /config/
+Disallow: /components/
+Disallow: /test-*.php
+Disallow: /send-mail-new.php
+Disallow: /send-email.php
+Disallow: /error_log
+
+# Allow crawling of assets
+Allow: /assets/
+Allow: /css/
+Allow: /js/
+
+# Sitemap location
 Sitemap: https://www.plastoproof.com/sitemap.xml
